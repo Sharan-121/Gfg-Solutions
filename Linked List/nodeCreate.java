@@ -1,5 +1,5 @@
 
-class LinkedList1 {
+class LinkedList{
     Node head;
     public class Node {
         int data;
