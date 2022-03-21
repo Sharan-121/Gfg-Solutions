@@ -35,7 +35,13 @@ class LinkedList{
             }
         }
         if(flag == 1){
-            System.out.println("yes");
+            int count = 1;
+            while(fast.next != slow){
+                fast = fast.next;
+                count++;
+            }
+            System.out.println("yes "+count);
+
         }
         else{
             System.out.println("No");
@@ -45,6 +51,16 @@ class LinkedList{
 }
 public class floydCycle {
     public static void main(String[] args) {
-        
+        LinkedList obj = new LinkedList();
+        obj.pushNewData(1);
+        obj.pushNewData(2);
+        obj.pushNewData(3);
+        obj.pushNewData(4);
+        obj.pushNewData(5);
+        obj.pushNewData(6);
+
+        obj.head.next.next.next.next.next.next = obj.head.next;
+        obj.detectCycle();
+
     }
 }
