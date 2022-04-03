@@ -27,13 +27,10 @@ class groupLinkedList {
 
     void printData(Node head) {
         Node temp = head;
-        while (temp != null) {
-            System.out.println(temp.data);
-            temp = temp.next;
-        }
+
     }
 
-    Node reverse(Node head, int k) {
+    Node reverse(Node head, int k, boolean b) {
         if (head == null) {
             return null;
         }
@@ -44,15 +41,22 @@ class groupLinkedList {
 
         while (count < k && current != null) {
             next = current.next;
-            current.next = prev;
+            if (b == true) {
+                current.next = prev;
+            }
             prev = current;
             current = next;
             count++;
         }
-        if (next != null) {
-            head.next = reverse(next, k);
+        if (b == true) {
+            head.next = reverse(current, k, !b);
+
+            return prev;
+        } else {
+            prev.next = reverse(current, k, !b);
+
         }
-        return prev;
+        return head;
     }
 }
 
@@ -67,7 +71,7 @@ public class reverseInGroups {
         obj.pushNewData(6);
         obj.pushNewData(7);
         obj.pushNewData(8);
-        
-        obj.printData(obj.reverse(obj.head, 5));
+
+        obj.printData(obj.reverse(obj.head, 3, true));
     }
 }
