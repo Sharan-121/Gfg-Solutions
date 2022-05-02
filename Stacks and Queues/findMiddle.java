@@ -59,6 +59,24 @@ class DDL{
             }
             System.out.println(this.mid.data);
         }
+        void deleteMiddle(){
+            if(this.count == 1){
+                return;
+            }
+            DDLNode midPrev = mid.prev;
+            DDLNode midNext = mid.next;
+            midPrev.next = midNext;
+            midNext.prev = midPrev;
+            mid.next = mid.prev = null;
+            this.count--;
+
+            if(count % 2 == 0){
+                mid = midNext;
+            }
+            else{
+                mid = midPrev;
+            }
+        }
     }
 }
 
@@ -71,9 +89,9 @@ public class findMiddle {
         obj1.push(3);
         obj1.push(4);
         obj1.push(5);
-        // obj1.push(6);
-        System.out.println(  obj1.pop());
-      
+        obj1.push(6);
+        obj1.printMiddle();
+        obj1.deleteMiddle();
         obj1.printMiddle();
 
         
